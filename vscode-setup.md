@@ -1,10 +1,10 @@
 # VSCode setup used in the course
 
-### Theme
+## Theme
 
 I use the `Oceanic Next` theme with the dimmed bg option. [Link &rarr;](https://marketplace.visualstudio.com/items?itemName=naumovs.theme-oceanicnext)
 
-### Extensions used in course videos
+## Extensions used in course videos
 
 For each of the extensions, read the overview page in order to learn how to use it.
 
@@ -20,15 +20,15 @@ For each of the extensions, read the overview page in order to learn how to use 
 
 `Prettier` to automatically format code. [Link &rarr;](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
-### Other extensions I use (will keep it updated) 
+### Other extensions I use (will keep it updated)
 
 `Project Manager` to easily switch between projects. One of the most useful extensions. [Link &rarr;](https://marketplace.visualstudio.com/items?itemName=alefragnani.project-manager)
 
-### Settings
+## Settings
 
 If you want your editor to work and look exactly the same way as mine does in the course videos, you can copy these settings to your own settings file. Just go to settings in VSCode, and on the right side, you can paste this code.
 
-```
+```JSON
 {
   "workbench.colorTheme": "Oceanic Next (dimmed bg)",
   "files.autoSave": "onFocusChange",
