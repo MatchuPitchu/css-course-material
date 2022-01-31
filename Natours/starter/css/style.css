@@ -4,21 +4,28 @@ Medium green: #55c57a
 Dark green: #28b485
 */
 
-/* reset to have same appearance on every browser */
-* {
+/* reset to have same appearance on every browser, also add all pseudo-elements */
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* padding + borders are NO longer added to box width and hight */
+  box-sizing: inherit; /* box-sizing is not inherited by default, but I can set inheritance for every element on page */
+}
+
+html {
+  /* define root font-size: often used workaround for better rem calcs, set it to 10px */
+  font-size: 62.5%; /* correspond to 10px (% based on default root font size 16px) but user can set his desired root font size in browser settings */
 }
 
 /* overall font properties in body element to allow use of inheritance */
 body {
   font-family: Lato, sans-serif;
   font-weight: 400;
-  font-size: 16px;
   line-height: 1.7;
   color: #777;
-  padding: 30px; /* space arround entire webpage */
+  padding: 3rem; /* space arround entire webpage */
+  box-sizing: border-box; /* padding + borders are NO longer added to box width and hight */
 }
 
 .header {
@@ -42,12 +49,12 @@ body {
 .logo-box {
   position: absolute;
   /* position starts at top left corner of first PARENT element that can find with position: relative */
-  top: 40px;
-  left: 40px;
+  top: 4rem;
+  left: 4rem;
 }
 
 .logo {
-  height: 35px;
+  height: 3.5rem;
 }
 
 /* center content */
@@ -66,15 +73,15 @@ body {
   text-transform: uppercase;
   /* to prevent litte strange move of this box element when animations inside are finished  */
   backface-visibility: hidden;
-  margin-bottom: 60px;
+  margin-bottom: 6rem;
 }
 
 /* define as block elements occupy whole line and create line breaks before and after them  */
 .heading-primary-main {
-  font-size: 60px;
+  font-size: 6rem;
   font-weight: 400;
   display: block;
-  letter-spacing: 35px;
+  letter-spacing: 3.5rem;
   /* animation-timing-functions https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function */
   /* animation shorthand: order is important */
   animation: 1s ease-out moveInLeft /*3s 3*/;
@@ -84,9 +91,9 @@ body {
 
 .heading-primary-sub {
   display: block;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: 17.4px;
+  letter-spacing: 1.75rem;
   animation: 1s ease-out moveInRight;
 }
 
@@ -98,10 +105,10 @@ for browser performance: best is to animate only 2 props
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-100px);
+    transform: translateX(-10rem);
   }
   80% {
-    transform: translateX(10px);
+    transform: translateX(1rem);
   }
   100% {
     opacity: 1;
@@ -112,7 +119,7 @@ for browser performance: best is to animate only 2 props
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(10rem);
   }
   100% {
     opacity: 1;
@@ -123,10 +130,10 @@ for browser performance: best is to animate only 2 props
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(3rem);
   }
   80% {
-    transform: translateY(-10px);
+    transform: translateY(-1rem);
   }
   100% {
     opacity: 1;
@@ -145,22 +152,23 @@ define 1 generic btn class and add specific properties with specific classes
   display: inline-block;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 15px 40px;
-  border-radius: 100px;
+  padding: 1.5rem 4rem;
+  border-radius: 10rem;
   transition: all 0.2s; /* transition prop has to be defined on initial state where a change will start */
   position: relative;
+  font-size: 1.6rem;
 }
 
 .btn:hover {
   transform: translateY(-3px);
   /* box shadow: offset x axis, offset y axis, blur, color of shadow */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
 /* gives impression of real clicking */
 .btn:active {
   transform: translateY(-1px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
 .btn-white {
@@ -176,7 +184,7 @@ define 1 generic btn class and add specific properties with specific classes
   /* pseudo-element is treated like child of .btn - so 100% refers to dimensions of .btn */
   height: 100%;
   width: 100%;
-  border-radius: 100px;
+  border-radius: 10rem;
   /* put pseudo-element behind current btn */
   position: absolute;
   top: 0;
