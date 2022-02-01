@@ -1,0 +1,33 @@
+@use '../abstracts/variables' as *;
+
+// how to write flexbox grid mobile first: https://www.taniarascia.com/easiest-flex-grid-ever/
+.grid-test {
+  display: flex;
+  flex-direction: column;
+  row-gap: $gutter-vertical;
+  max-width: 114rem; // 1rem = 10px (root font-size);
+  margin: 0 auto;
+}
+
+.row {
+  background-color: #eee;
+  display: flex;
+  flex-flow: row wrap;
+  row-gap: $gutter-vertical;
+  column-gap: $gutter-horizontal;
+
+  // selects all elements with class atribute starting with 'col-...'
+  // ^ starts with
+  // $ ends with
+  // * contains it
+  [class^='col-'] {
+    flex-basis: 100%;
+    background-color: orangered;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .row {
+    flex-flow: row nowrap;
+  }
+}

@@ -125,6 +125,31 @@ body {
   animation-fill-mode: backwards;
 }
 
+.grid-test {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8rem;
+  max-width: 114rem;
+  margin: 0 auto;
+}
+
+.row {
+  background-color: #eee;
+  display: flex;
+  flex-flow: row wrap;
+  row-gap: 8rem;
+  column-gap: 6rem;
+}
+.row [class^=col-] {
+  flex-basis: 100%;
+  background-color: orangered;
+}
+
+@media screen and (min-width: 800px) {
+  .row {
+    flex-flow: row nowrap;
+  }
+}
 .header {
   position: relative;
   height: 95vh;
