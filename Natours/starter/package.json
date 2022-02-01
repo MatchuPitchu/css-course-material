@@ -7,7 +7,7 @@
   "main": "index.js",
   "scripts": {
     "start": "lite-server",
-    "compile:sass": "sass sass/main.scss css/style.css -w"
+    "compile:sass": "sass sass:css -w"
   },
   "devDependencies": {
     "lite-server": "^2.6.1"

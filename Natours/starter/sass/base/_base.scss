@@ -1,0 +1,19 @@
+@use '../abstracts/variables' as *; // import with * (instead of SOMENAME) to use variables without SOMENAME.$variable-name
+
+// reset to have same appearance on every browser, also add all pseudo-elements
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; // box-sizing is not inherited by default, but I can set inheritance for every element on page
+}
+
+html {
+  // define root font-size of 1rem: often used workaround for better rem calcs, set it to 10px
+  font-size: 62.5%; // correspond to 10px (% based on default root font size 16px) but user can set his desired root font size in browser settings
+}
+
+body {
+  box-sizing: border-box; // padding + borders are NO longer added to box width and hight
+}
