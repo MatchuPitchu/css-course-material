@@ -1,17 +1,22 @@
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
+$color-grey-dark: #777;
+$color-white: #fff;
+
 /* reset to have same appearance on every browser, also add all pseudo-elements */
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
-  /* box-sizing is not inherited by default, but I can set inheritance for every element on page */
+  box-sizing: inherit; /* box-sizing is not inherited by default, but I can set inheritance for every element on page */
 }
 
 html {
   /* define root font-size: often used workaround for better rem calcs, set it to 10px */
-  font-size: 62.5%;
-  /* correspond to 10px (% based on default root font size 16px) but user can set his desired root font size in browser settings */
+  font-size: 62.5%; /* correspond to 10px (% based on default root font size 16px) but user can set his desired root font size in browser settings */
 }
 
 /* overall font properties in body element to allow use of inheritance */
@@ -19,11 +24,9 @@ body {
   font-family: Lato, sans-serif;
   font-weight: 400;
   line-height: 1.7;
-  color: #777;
-  padding: 3rem;
-  /* space arround entire webpage */
-  box-sizing: border-box;
-  /* padding + borders are NO longer added to box width and hight */
+  color: $color-grey-dark;
+  padding: 3rem; /* space arround entire webpage */
+  box-sizing: border-box; /* padding + borders are NO longer added to box width and hight */
 }
 
 .header {
@@ -31,9 +34,13 @@ body {
   height: 95vh;
   /* use comma to define 2 bgs one on top of the other (gradient on top of bg img) 
   gradient colors use opacity, so that img is visible */
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
-  background-size: cover;
-  /* whatever width of viewport, img will fit always fit element */
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(../img/hero.jpg);
+  background-size: cover; /* whatever width of viewport, img will fit always fit element */
   background-position: top;
   /* define polygone coordinates in which element is still visible;
   coordinates goes clockwise from top left (-> x = 0, y = 0) corner on */
@@ -54,18 +61,16 @@ body {
 /* center content */
 .header__text-box {
   position: absolute;
-  top: 40%;
-  /* means that element starts exactly at this point */
+  top: 40%; /* means that element starts exactly at this point */
   left: 50%;
   /* to center exactly in middle, have to use translate(x, y); 
   that refers to element itself: -50% means half of element width OR height to left OR top*/
   transform: translate(-50%, -50%);
-  text-align: center;
-  /* centers all inline elements (e.g. text, but also <a>) */
+  text-align: center; /* centers all inline elements (e.g. text, but also <a>) */
 }
 
 .heading-primary {
-  color: #fff;
+  color: $color-white;
   text-transform: uppercase;
   /* to prevent litte strange move of this box element when animations inside are finished  */
   backface-visibility: hidden;
@@ -80,7 +85,7 @@ body {
   letter-spacing: 3.5rem;
   /* animation-timing-functions https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function */
   /* animation shorthand: order is important */
-  animation: 1s ease-out moveInLeft;
+  animation: 1s ease-out moveInLeft /*3s 3*/;
   /* animation-iteration-count: 3;  */
   /* animation-delay: 3s; */
 }
@@ -97,6 +102,7 @@ body {
 2 types of animation: a) transition property when hovering is defined, b) @keyframes;
 for browser performance: best is to animate only 2 props
 */
+
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -110,6 +116,7 @@ for browser performance: best is to animate only 2 props
     transform: translateX(0);
   }
 }
+
 @keyframes moveInRight {
   0% {
     opacity: 0;
@@ -120,6 +127,7 @@ for browser performance: best is to animate only 2 props
     transform: translateX(0);
   }
 }
+
 @keyframes moveInBottom {
   0% {
     opacity: 0;
@@ -133,6 +141,7 @@ for browser performance: best is to animate only 2 props
     transform: translateY(0);
   }
 }
+
 /* 
 a pseudo-class allows to select something that cannot be expressed by a simple selector;
 examples: :link, :visited, :hover, :focus, :active are  -> to define in this order;
@@ -146,8 +155,7 @@ define 1 generic btn class and add specific properties with specific classes
   text-decoration: none;
   padding: 1.5rem 4rem;
   border-radius: 10rem;
-  transition: all 0.2s;
-  /* transition prop has to be defined on initial state where a change will start */
+  transition: all 0.2s; /* transition prop has to be defined on initial state where a change will start */
   position: relative;
   font-size: 1.6rem;
 }
@@ -165,14 +173,14 @@ define 1 generic btn class and add specific properties with specific classes
 }
 
 .btn--white {
-  background-color: #fff;
-  color: #777;
+  background-color: $color-white;
+  color: $color-grey-dark;
 }
 
 /* a pseudo-element allows to create items that do not normally exist in document tree, for example ::after */
 .btn::after {
   /* content + display needed to make appear pseudo-element on screen */
-  content: "";
+  content: '';
   display: inline-block;
   /* pseudo-element is treated like child of .btn - so 100% refers to dimensions of .btn */
   height: 100%;
@@ -187,14 +195,13 @@ define 1 generic btn class and add specific properties with specific classes
 }
 
 .btn--white::after {
-  background-color: #fff;
+  background-color: $color-white;
 }
 
 /* when btn is hovered following pseudo-element appears */
 .btn:hover::after {
   transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0;
-  /* appears like effect of fading out */
+  opacity: 0; /* appears like effect of fading out */
 }
 
 .btn--animated {
@@ -203,5 +210,3 @@ define 1 generic btn class and add specific properties with specific classes
   "forwards": end step styles will remain */
   animation-fill-mode: backwards;
 }
-
-/*# sourceMappingURL=style.css.map */
