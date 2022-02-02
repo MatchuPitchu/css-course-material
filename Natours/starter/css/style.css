@@ -138,16 +138,31 @@ body {
   display: flex;
   flex-flow: row wrap;
   row-gap: 8rem;
-  column-gap: 6rem;
 }
 .row [class^=col-] {
   flex-basis: 100%;
   background-color: orangered;
+  border: 1px solid #000;
 }
 
 @media screen and (min-width: 800px) {
   .row {
     flex-flow: row nowrap;
+  }
+  .row .col-1-of-3 {
+    flex: 3.3333333333;
+  }
+  .row .col-2-of-3 {
+    flex: 6.6666666667;
+  }
+  .row .col-1-of-4 {
+    flex: 2.5;
+  }
+  .row .col-2-of-4 {
+    flex: 5;
+  }
+  .row .col-3-of-4 {
+    flex: 7.5;
   }
 }
 .header {
