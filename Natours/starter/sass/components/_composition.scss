@@ -1,0 +1,42 @@
+@use '../abstracts/variables' as *;
+
+.composition {
+  position: relative;
+
+  &__photo {
+    position: absolute;
+    width: 55%; // responsive size for images
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.4);
+    border-radius: 2px;
+    outline-offset: 2rem; // space between content and outline "border"
+    z-index: 1;
+    transition: all 0.2s;
+
+    &--p1 {
+      top: -2rem;
+      left: 0;
+    }
+
+    &--p2 {
+      top: 2rem;
+      right: 0;
+    }
+
+    &--p3 {
+      top: 10rem;
+      left: 20%;
+    }
+
+    &:hover {
+      outline: 0.5rem solid $color-primary;
+      transform: scale(1.05) translateY(-0.5rem);
+      box-shadow: 0 2.5rem 4rem rgba($color-black, 0.5); // impression of bigger img, so more intense shadow
+      z-index: 2; // hovered img on top of stack
+    }
+  }
+
+  // if composition is hovered, select photo which is NOT hovered
+  &:hover &__photo:not(:hover) {
+    transform: scale(0.95);
+  }
+}

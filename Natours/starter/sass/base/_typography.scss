@@ -38,3 +38,36 @@ body {
     animation: 1s ease-out moveInRight;
   }
 }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+  transition: all 0.2s;
+  // linear gradient as background of words
+  display: inline-block; // element has only width of words
+  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  background-clip: text; // clip bg exactly to the shape of the text
+  color: transparent;
+
+  &:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1); // skews content, not only rotating
+    text-shadow: 0.5rem 1rem 2rem rgba($color-black, 0.2);
+  }
+}
+
+.heading-tertiary {
+  font-size: $default-font-size;
+  font-size: 700;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: $default-font-size;
+
+  // select everything except of last child
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
