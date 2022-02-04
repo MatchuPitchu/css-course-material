@@ -34,3 +34,31 @@
   padding: 15rem 0;
   position: relative; // needed for bg-video inside section
 }
+
+.section-book {
+  padding: 15rem 0;
+  background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+}
+
+.book {
+  // SOLID COLOR GRADIENT FOR BACKGROUND-IMAGES
+  // gradient on top of the img; x% after color to declare at which point color is fully achieved;
+  // rectangle effect because of degree angle
+  background-image: linear-gradient(
+      105deg,
+      rgba($color-white, 0.9) 0%,
+      rgba($color-white, 0.9) 50%,
+      transparent 50%
+    ),
+    url(../../img/nat-10.jpg);
+  background-size: cover;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+  &__form {
+    width: 50%;
+    padding: 6rem;
+  }
+}

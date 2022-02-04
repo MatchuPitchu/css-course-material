@@ -4,6 +4,7 @@
   // a pseudo-class allows to select something that cannot be expressed by a simple selector;
   // examples: :link, :visited, :hover, :focus, :active are  -> to define in this order;
   // define 1 generic btn class and add specific properties with specific classes
+  &,
   &:link,
   &:visited {
     // by default <a> is inline element, define it as inline-block that you can set width, height, padding
@@ -15,6 +16,10 @@
     border-radius: 10rem;
     transition: all 0.2s; // transition prop has to be defined on initial state where a change will start
     position: relative;
+
+    // for <button> element
+    border: none;
+    cursor: pointer;
   }
 
   &:hover {
@@ -30,14 +35,16 @@
   }
 
   // gives impression of real clicking
-  &:active {
+  &:active,
+  &:focus {
+    outline: none; // to reset default <button> element setting
     transform: translateY(-1px);
     box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
   }
 
   &--white {
     background-color: $color-white;
-    color: $color-grey-dark;
+    color: $color-grey-dark-1;
 
     &::after {
       background-color: $color-white;
