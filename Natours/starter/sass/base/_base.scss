@@ -12,6 +12,7 @@
 html {
   // define root font-size of 1rem: often used workaround for better rem calcs, set it to 10px
   font-size: 62.5%; // correspond to 10px (% based on default root font size 16px) but user can set his desired root font size in browser settings
+  scroll-behavior: smooth;
 }
 
 body {
