@@ -90,20 +90,33 @@
           </div>
           <div class="col-1-of-2">
             <div class="composition">
+              <!-- resolution switching: 
+                - srcset: path with width descriptor ...w to inform browser about img width
+                - sizes: list of breakpoints with media query or last one as the default option; 
+                  check in browser dev tools which size is covered by an img until certain wished breakpoint 
+                  and calculate viewport width (e.g. 900px/img size in browser) that uses browser to choose with img src filled space in the best way 
+                - src: add attribute when user useses older browser 
+              -->
               <img
-                src="img/nat-1-large.jpg"
+                srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"
+                sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
                 alt="Photo 1"
                 class="composition__photo composition__photo--p1"
+                src="img/nat-1-large.jpg"
               />
               <img
-                src="img/nat-2-large.jpg"
+                srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w"
+                sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
                 alt="Photo 2"
                 class="composition__photo composition__photo--p2"
+                src="img/nat-2-large.jpg"
               />
               <img
-                src="img/nat-3-large.jpg"
+                srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w"
+                sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
                 alt="Photo 3"
                 class="composition__photo composition__photo--p3"
+                src="img/nat-3-large.jpg"
               />
             </div>
           </div>
@@ -386,7 +399,21 @@
 
     <footer class="footer">
       <div class="footer__logo-box">
-        <img src="img/logo-green-2x.png" alt="Full logo" class="footer__logo" />
+        <!-- changing images with <picture>; 
+        media attribute in <source> can contain media query, if query does NOT match, then fallback is displayed -->
+        <picture class="footer__logo">
+          <source
+            srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x"
+            media="(max-width: 37.5em)"
+          />
+          <!-- img is fallback -->
+          <!-- density switching of logo: 1x/2x = density selector according to screen (high-/low-res) of user -->
+          <img
+            srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x"
+            alt="Full logo"
+            src="img/logo-green-1x.png"
+          />
+        </picture>
       </div>
       <div class="row">
         <div class="col-1-of-2">
