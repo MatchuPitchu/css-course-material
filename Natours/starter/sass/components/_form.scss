@@ -1,6 +1,9 @@
 @use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
 
 .form {
+  padding: 3rem;
+
   &__group:not(:last-child) {
     margin-bottom: 2rem;
   }
@@ -17,6 +20,11 @@
     border: none;
     border-bottom: 3px solid transparent;
     transition: all 0.3s;
+
+    @include respond($tab-port) {
+      width: 100%;
+      padding: 1rem;
+    }
 
     &:focus {
       outline: none;

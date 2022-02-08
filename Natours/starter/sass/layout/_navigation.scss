@@ -1,4 +1,5 @@
 @use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
 
 .navigation {
   &__checkbox {
@@ -19,6 +20,11 @@
     box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
     cursor: pointer;
     z-index: 200; // btn is on top of everything, then nav opened, then background for menu btn, then webpage
+
+    @include respond($tab-port) {
+      top: 2rem;
+      right: 2rem;
+    }
   }
 
   &__background {
@@ -32,6 +38,11 @@
     background-image: radial-gradient($color-primary-light, $color-primary-dark);
     z-index: 100;
     transition: transform 0.8s cubic-bezier(0.78, 0.12, 0.46, 0.81); // https://cubic-bezier.com OR https://easings.net/de
+
+    @include respond($tab-port) {
+      top: 2.5rem;
+      right: 2.5rem;
+    }
   }
 
   &__nav {

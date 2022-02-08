@@ -1,4 +1,5 @@
 @use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
 
 .story {
   width: 75%;
@@ -10,8 +11,18 @@
   font-size: $default-font-size;
   transform: skewX(-12deg);
 
+  @include respond($tab-port) {
+    width: 100%;
+    padding: 4rem;
+    transform: skewX(0);
+  }
+
   & > * {
     transform: skewX(12deg);
+
+    @include respond($tab-port) {
+      transform: skewX(0);
+    }
   }
 
   // float image around text

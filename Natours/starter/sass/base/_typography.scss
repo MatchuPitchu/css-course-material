@@ -1,5 +1,6 @@
 @use './animations';
 @use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
 
 // overall font properties in body element to allow use of inheritance
 body {
@@ -7,7 +8,6 @@ body {
   font-weight: 400;
   line-height: 1.7;
   color: $color-grey-dark-1;
-  padding: 3rem; // space arround entire webpage
 }
 
 .heading-primary {
@@ -28,6 +28,11 @@ body {
     animation: 1s ease-out moveInLeft; //3s 3*/;
     // animation-iteration-count: 3;
     // animation-delay: 3s;
+
+    @include respond($phone) {
+      letter-spacing: 1rem;
+      font-size: 5rem;
+    }
   }
 
   &--sub {
@@ -36,6 +41,10 @@ body {
     font-weight: 700;
     letter-spacing: 1.75rem;
     animation: 1s ease-out moveInRight;
+
+    @include respond($phone) {
+      letter-spacing: 0.5rem;
+    }
   }
 }
 
@@ -51,6 +60,14 @@ body {
   -webkit-background-clip: text; // needed for CHROME
   background-clip: text; // clip bg exactly to the shape of the text
   color: transparent;
+
+  @include respond($tab-port) {
+    font-size: 3rem;
+  }
+
+  @include respond($phone) {
+    font-size: 2.5rem;
+  }
 
   &:hover {
     transform: skewY(2deg) skewX(15deg) scale(1.1); // skews content, not only rotating
