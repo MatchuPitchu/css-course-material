@@ -92,7 +92,7 @@
             <div class="composition">
               <!-- resolution switching: 
                 - srcset: path with width descriptor ...w to inform browser about img width
-                - sizes: list of breakpoints with media query or last one as the default option; 
+                - sizes: list of breakpoints with media condition or last one as the default option; 
                   check in browser dev tools which size is covered by an img until certain wished breakpoint 
                   and calculate viewport width (e.g. 900px/img size in browser) that uses browser to choose with img src filled space in the best way 
                 - src: add attribute when user useses older browser 
@@ -400,7 +400,7 @@
     <footer class="footer">
       <div class="footer__logo-box">
         <!-- changing images with <picture>; 
-        media attribute in <source> can contain media query, if query does NOT match, then fallback is displayed -->
+        media attribute in <source> can contain media condition, if query does NOT match, then fallback (-> <img .../>) is displayed -->
         <picture class="footer__logo">
           <source
             srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x"

@@ -12,12 +12,22 @@
       rgba($color-primary-light, 0.8),
       rgba($color-primary-dark, 0.8)
     ),
-    url(../img/hero.jpg);
+    url(../img/hero-small.jpg);
   background-size: cover; // whatever width of viewport, img will fit always fit element
   background-position: top;
   // define polygone coordinates in which element is still visible;
   // coordinates goes clockwise from top left (-> x = 0, y = 0) corner on
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  // switch background images depending on the screen resolution (dpi) and width; comma stands for OR
+  @media (min-resolution: 192dpi) and (min-width: 600px), (min-width: 2000px) {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-secondary-light, 0.8),
+        rgba($color-secondary-dark, 0.8)
+      ),
+      url(../img/hero.jpg);
+  }
 
   @include respond($phone) {
     clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
