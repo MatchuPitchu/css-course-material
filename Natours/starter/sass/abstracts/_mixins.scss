@@ -31,13 +31,13 @@ in media query declaration: 1em = 16px
     // 1rem AND 1em in media query definition are always equal to default browser font-size (-> 16px)
     // recommendation: em is best unit for media query after some experiences;
     // max-width is calculated based on passed-in breakpoint and default browser font-size (-> 16px)
-    @media (max-width: calc(calc($breakpoint / 16px) * 1em)) {
+    @media only screen and (max-width: calc(calc($breakpoint / 16px) * 1em)) {
       // @content contains all childs, so media query mixin acts like wrapper
       @content;
     }
   } @else {
     // for big desktops, min-width is needed
-    @media (min-width: calc(calc($breakpoint / 16px) * 1em)) {
+    @media only screen and (min-width: calc(calc($breakpoint / 16px) * 1em)) {
       @content;
     }
   }

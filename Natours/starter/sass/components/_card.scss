@@ -188,7 +188,10 @@
     font-weight: 300; // big sized font looks better with less weight
   }
 
-  @include respond($tab-port) {
+  // @include respond($tab-port) {
+  // use additional media query to detect if user can hover on his device or not (iPads etc.)
+  @media only screen and (max-width: calc(calc($tab-port / 16px) * 1em)),
+    only screen and (hover: none) {
     height: auto;
     border-radius: 3px;
     background-color: $color-white;
