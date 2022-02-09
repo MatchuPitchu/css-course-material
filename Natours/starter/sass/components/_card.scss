@@ -21,6 +21,7 @@
     // hidden: for nested bg-img .card__picture to keep the rounded corners of card
     overflow: hidden;
     box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+    -webkit-backface-visibility: hidden; // property needs prefix (see caniuse.com)
     backface-visibility: hidden; // hides the backpart of the card: https://developer.mozilla.org/en-US/docs/Web/CSS/backface-visibility
     transition: all 1s ease;
 

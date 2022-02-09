@@ -27,20 +27,22 @@
 
   // float image around text
   &__shape {
+    position: relative;
     float: left; // element "floats" on the left side of parent element when width/height is given
     width: 15rem;
     height: 15rem;
     // shape-outside lets wrap text around complex objects rather than simple boxes: https://developer.mozilla.org/en-US/docs/Web/CSS/shape-outside
     shape-outside: circle(50% at 50% 50%); // circle(RADIUS at POSTION X POSITION Y in element)
-    clip-path: circle(50% at 50% 50%); // cut element like a circle
-    margin-right: 3rem;
-    position: relative;
+    margin-right: 4rem;
+    border-radius: 50%;
+    overflow: hidden;
   }
 
   &__img {
+    width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: translateX(-4rem) scale(1.4);
+    transform: scale(1.4);
     transition: all 0.5s;
   }
 
@@ -64,7 +66,7 @@
   }
 
   &:hover &__img {
-    transform: translateX(-4rem) scale(1);
+    transform: scale(1);
     filter: blur(3px) brightness(80%);
   }
 }

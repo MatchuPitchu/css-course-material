@@ -4,7 +4,7 @@
 // layout element since on every page I could have this header as a layout basis
 .header {
   position: relative;
-  height: 95vh;
+  height: 85vh;
   // use comma to define 2 bgs one on top of the other (gradient on top of bg img)
   // gradient colors use opacity, so that img is visible
   background-image: linear-gradient(
@@ -15,12 +15,20 @@
     url(../img/hero-small.jpg);
   background-size: cover; // whatever width of viewport, img will fit always fit element
   background-position: top;
-  // define polygone coordinates in which element is still visible;
-  // coordinates goes clockwise from top left (-> x = 0, y = 0) corner on
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+    // define polygone coordinates in which element is still visible;
+    // coordinates goes clockwise from top left (-> x = 0, y = 0) corner on
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    height: 95vh;
+  }
 
   // switch background images depending on the screen resolution (dpi) and width; comma stands for OR
-  @media (min-resolution: 192dpi) and (min-width: 600px), (min-width: 2000px) {
+  // -webkit-min-device-pixel-ratio is for Safari since min-resolution is NOT working there
+  @media (min-resolution: 192dpi) and (min-width: 600px),
+    (-webkit-min-device-pixel-ratio: 2) and (min-width: 600px),
+    (min-width: 2000px) {
     background-image: linear-gradient(
         to right bottom,
         rgba($color-secondary-light, 0.8),
