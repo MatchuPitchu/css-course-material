@@ -23,10 +23,16 @@
 
 .sidebar {
   flex: 0 0 18%; // always keeps 18% of space
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: var(--color-grey-dark-1);
 }
 
 .hotel-view {
   flex: 1; // grow to occupy remaining space
+
+  // ONLY FOR DEV
   background-color: orangered;
+  height: 80rem;
 }
