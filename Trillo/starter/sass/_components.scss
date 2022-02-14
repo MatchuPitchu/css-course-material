@@ -1,3 +1,6 @@
+@use './abstracts/mixins' as *;
+@use './base' as *;
+
 // LOGO
 .logo {
   height: 3.25rem;
@@ -10,6 +13,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  // put searchbar on new line below
+  @include respond($bp-smallest) {
+    order: 1;
+    flex: 0 0 100%;
+    background-color: var(--color-grey-light-2);
+  }
 
   &__input {
     font-family: inherit; // input elements do NOT inherit automatically, have to set it
@@ -117,11 +127,25 @@
   list-style: none;
   margin-top: 3.5rem;
 
+  @include respond($bp-medium) {
+    display: flex;
+    margin: 0;
+  }
+
   &__item {
     position: relative;
 
+    @include respond($bp-medium) {
+      flex: 1;
+    }
+
     &:not(:last-child) {
       margin-bottom: 0.5rem;
+
+      @include respond($bp-medium) {
+        flex: 1;
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -154,21 +178,36 @@
   &__link:visited {
     display: flex;
     align-items: center;
+    gap: 0.7rem 2rem;
     color: var(--color-grey-light-1);
     text-decoration: none;
     text-transform: uppercase;
     padding: 1.5rem 3rem;
     position: relative; // z-index works only with specified position
     z-index: 1;
+
+    @include respond($bp-medium) {
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    @include respond($bp-small) {
+      flex-direction: column;
+      padding: 1.5rem 0.5rem;
+    }
   }
 
   &__icon {
     width: 1.75rem;
     height: 1.75rem;
-    margin-right: 2rem;
     // color of parent element OR if same element has a defined color property;
     // when color parent element changes (e.g. for :hover), then currentColor would change here
     fill: currentColor;
+
+    @include respond($bp-small) {
+      width: 2.25rem;
+      height: 2.25rem;
+    }
   }
 }
 
@@ -178,6 +217,10 @@
   color: var(--color-grey-light-4);
   text-align: center;
   padding: 2.5rem;
+
+  @include respond($bp-medium) {
+    display: none;
+  }
 }
 
 // GALLERY
@@ -202,6 +245,11 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 1.5rem 3rem;
+
+    @include respond($bp-small) {
+      font-size: 1.8rem;
+      padding: 1.25rem 2rem;
+    }
   }
 
   &__stars {
@@ -237,12 +285,20 @@
     color: #fff;
     margin-left: 3rem;
     padding: 0 2.25rem;
+
+    @include respond($bp-small) {
+      padding: 0 1.5rem;
+    }
   }
 
   &__rating-average {
     font-size: 2.25rem;
     font-weight: 300;
     margin-bottom: -3px;
+
+    @include respond($bp-small) {
+      font-size: 1.8rem;
+    }
   }
 
   &__rating-count {
@@ -349,6 +405,10 @@
     margin-right: auto;
   }
 
+  &__friends {
+    display: flex;
+  }
+
   &__photo {
     box-sizing: content-box; // now border is added on top and does NOT shrink the content (= image)
     height: 4rem;
@@ -371,6 +431,11 @@
   padding: 3rem;
   margin-bottom: 3.5rem;
   overflow: hidden;
+
+  @include respond($bp-medium) {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
 
   &__text {
     margin-bottom: 2rem;
@@ -431,6 +496,10 @@
 .cta {
   padding: 3.5rem 0;
   text-align: center;
+
+  @include respond($bp-medium) {
+    padding: 2.5rem 0;
+  }
 
   &__book-now {
     font-size: 2rem;
