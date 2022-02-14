@@ -353,8 +353,8 @@
 }
 
 // PARAGRAPH
-// :last-of-type pseudo class selects last p element
-// :last-child includes all children of a parent element and only applies for last child
+// :last-of-type pseudo class selects last child element in `paragraph` parent element
+// :last-child includes all children of `paragraph` parent and only applies for last child
 .paragraph:not(:last-of-type) {
   margin-bottom: 2rem;
 }
@@ -384,13 +384,18 @@
 
     // INSERT SVG IN CSS
     // older brwosers - problem: can NOT adjust color of svg
-    // background-image: url(../img/chevron-thin-right.svg);
-    // background-size: cover;
+    background-image: url(../img/chevron-thin-right.svg);
+    background-size: cover;
 
-    // newer browsers - mask properties
-    background-color: var(--color-primary);
-    mask-image: url(../img/chevron-thin-right.svg);
-    mask-size: cover;
+    // newer browsers - mask properties (-> in 2022 nearly every browser supports it)
+    @supports (-webkit-mask-image: url()) or (mask-image: url()) {
+      background-color: var(--color-primary);
+      -webkit-mask-image: url(../img/chevron-thin-right.svg);
+      -webkit-mask-size: cover;
+      mask-image: url(../img/chevron-thin-right.svg);
+      mask-size: cover;
+      background-image: none;
+    }
   }
 }
 

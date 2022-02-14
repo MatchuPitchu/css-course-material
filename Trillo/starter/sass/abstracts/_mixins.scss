@@ -1,21 +1,8 @@
 // MEDIA QUERY MANAGEMENT
-/*
-0 - 600px: Phone
-600 - 900px: Tablet portrait
-900 - 1200px: Tablet landscape
-[1200 - 1800px: normal styles]
-1800px +: big Desktop
-
-$breakpoint arguments
-- phone
-- tab-port
-- tab-land
-- big-desktop
-
-use relative unit for media query, so if user changes browser's font-size, 
+/* 
+- use relative unit for media query, so if user changes browser's font-size, 
 this is automatically taken for breakpoints
-
-in media query declaration: 1em = 16px
+- in media query declaration: 1em = 16px
 */
 
 @mixin respond($breakpoint) {
