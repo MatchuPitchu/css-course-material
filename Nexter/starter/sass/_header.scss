@@ -1,0 +1,8 @@
+@use 'base' as *;
+
+.header {
+  background-color: $color-grey-dark-1;
+  // grid-column: full-start / col-end 6; // name set of columns col-start x to col-end x -> use dev tools to count cols
+  // grid-row: 1 / 2;
+  grid-area: 1 / full-start / 2 / col-end 6;
+}

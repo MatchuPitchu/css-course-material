@@ -1,15 +1,59 @@
 // COLOR VARIABLES
 $color-primary: #c69963;
-$color-primary-dark: #B28451;
+$color-primary-dark: #b28451;
 
 $color-secondary: #101d2c;
 
 $color-grey-light-1: #f9f7f6;
 $color-grey-light-2: #aaa;
 
-$color-grey-dark-1: #54483A;
-$color-grey-dark-2: #6D5D4B;
+$color-grey-dark-1: #54483a;
+$color-grey-dark-2: #6d5d4b;
 
 // FONT VARIABLES
 $font-primary: 'Nunito', sans-serif;
 $font-display: 'Josefin Sans', sans-serif;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%; // 1rem = 10px, 10px/16px[browser default] = 62.5%
+}
+
+body {
+  font-family: $font-primary;
+  color: $color-grey-dark-2;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+// auto is identical to max-content if it's a maximum. As a minimum it represents the largest minimum size (as specified by min-width/min-height) of the grid items occupying the grid track.
+// here: auto would be equal to min-content
+.container {
+  display: grid;
+  // use relative units for responsive layout
+  grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  // calc of cols: your webpage container (e.g. 1140px) divided by 8 (=approx. 140px)
+  // each col should have width beteen its min content and width of 140px
+  // add sidebar as first col with fix width
+  // center cols in viewport (except sidebar): add 2 wrapping cols with each 1fr AND at least 6rem for little remaining padding for shrinked webpage
+  // advantage: use wrapping cols later for wide design elements (e.g. wide images ...)
+  grid-template-columns:
+    [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(
+      8,
+      [col-start] minmax(min-content, 14rem) [col-end]
+    )
+    [center-end] minmax(6rem, 1fr) [full-end];
+
+  // ONLY FOR DEV
+  & > * {
+    padding: 40px;
+    font-size: 3rem;
+  }
+}

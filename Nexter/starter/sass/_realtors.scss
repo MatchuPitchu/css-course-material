@@ -1,0 +1,8 @@
+@use 'base' as *;
+
+.realtors {
+  background-color: $color-secondary;
+  // grid-column: col-start 7 / full-end;
+  // grid-row: 1 / 2;
+  grid-area: 1 / col-start 7 / 2 / full-end;
+}
