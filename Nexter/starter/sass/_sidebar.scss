@@ -6,4 +6,37 @@
   // grid-row: 1 / -1;
   // shorthand
   grid-area: 1 / sidebar-start / -1 / sidebar-end;
+
+  // center btn inside sidebar
+  display: flex;
+  justify-content: center;
+}
+
+.nav-btn {
+  border: none;
+  border-radius: 0;
+  background-color: #fff;
+  height: 2px;
+  width: 4.5rem;
+  margin-top: 4rem;
+
+  // create nav button with before + after pseudo elements
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    background-color: #fff;
+    height: 2px;
+    width: 4.5rem;
+  }
+
+  &::before {
+    transform: translateY(-1.5rem);
+  }
+
+  &::after {
+    transform: translateY(
+      1.3rem
+    ); // 1.3rem otherwise space between bars not equal since height of nav-btn of 2px makes effect that ::before is nearer
+  }
 }
