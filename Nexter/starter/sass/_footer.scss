@@ -1,11 +1,9 @@
 @use 'base' as *;
 
 .footer {
-  background-color: $color-secondary;
-  // grid-column: full-start / full-end;
-  // grid-row: 6 / 7;
-  grid-area: 6 / full-start / 7 / full-end;
+  grid-column: full-start / full-end;
   padding: 8rem;
+  background-color: $color-secondary;
 }
 
 .nav {

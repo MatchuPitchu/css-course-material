@@ -2,10 +2,7 @@
 
 // header row has height of 80vh (see grid definition of .container)
 .header {
-  background-color: $color-grey-dark-1;
-  // grid-column: full-start / col-end 6; // name set of columns col-start x to col-end x -> use dev tools to count cols
-  // grid-row: 1 / 2;
-  grid-area: 1 / full-start / 2 / col-end 6;
+  grid-column: full-start / col-end 6; // name set of columns col-start x to col-end x -> use dev tools to count cols
   // best way to create overlay
   background-image: linear-gradient(rgba($color-secondary, 0.93), rgba($color-secondary, 0.93)),
     url(../img/hero.jpeg);
@@ -13,9 +10,15 @@
   padding: 4rem 8rem 8rem 8rem;
 
   display: grid;
-  // DYNAMIC SPACING WITH GRID: with 1fr 1st + 4th row occupie all available space, 2nd row occupies only its content
-  grid-template-rows: 1fr min-content 6rem 1fr;
-  grid-template-columns: max-content; // here only 1 col, col has width of largest content (without line-break) of a grid item in this column
+  // DYNAMIC SPACING WITH GRID:
+  // - with 1fr 1st + 4th row occupie all available space,
+  // - 2nd row occupies only its content
+  // - 3rd row has min height of 6rem and max height of min-content (-> so that a content text line fits)
+  grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+  grid-template-columns: minmax(
+    min-content,
+    max-content
+  ); // here only 1 col, col has maximal width of largest content (without line-break) and minimal width of largester word of a grid item in this column
   grid-row-gap: 1.5rem;
   justify-content: center; // center entire grid content horizontally in grid container
 
@@ -51,11 +54,13 @@
 
   &__seenon-logos {
     display: flex;
-    justify-content: space-between;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
     gap: 3rem;
 
     img {
-      height: 2.5rem;
+      max-height: 2.5rem;
       filter: brightness(70%); // set img darker
     }
   }

@@ -9,6 +9,11 @@
 html {
   font-size: 62.5%;
 }
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 50%;
+  }
+}
 
 body {
   font-family: "Nunito", sans-serif;
@@ -21,6 +26,12 @@ body {
   display: grid;
   grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
   grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+}
+@media only screen and (max-width: 62.5em) {
+  .container {
+    grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
+    grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+  }
 }
 
 .heading-4, .heading-3, .heading-2, .heading-1 {
@@ -95,9 +106,17 @@ body {
 
 .sidebar {
   background-color: #c69963;
-  grid-area: 1/sidebar-start/-1/sidebar-end;
+  grid-column: sidebar-start/sidebar-end;
   display: flex;
   justify-content: center;
+}
+@media only screen and (max-width: 62.5em) {
+  .sidebar {
+    grid-column: 1/-1;
+    grid-row: 1/2;
+    justify-content: flex-end;
+    align-items: center;
+  }
 }
 
 .nav-btn {
@@ -121,16 +140,27 @@ body {
 .nav-btn::after {
   transform: translateY(1.3rem);
 }
+@media only screen and (max-width: 62.5em) {
+  .nav-btn {
+    margin-top: 0;
+    margin-right: 3rem;
+  }
+  .nav-btn::before {
+    transform: translateY(-1.2rem);
+  }
+  .nav-btn::after {
+    transform: translateY(1rem);
+  }
+}
 
 .header {
-  background-color: #54483a;
-  grid-area: 1/full-start/2/col-end 6;
+  grid-column: full-start/col-end 6;
   background-image: linear-gradient(rgba(16, 29, 44, 0.93), rgba(16, 29, 44, 0.93)), url(../img/hero.jpeg);
   background-position: center;
   padding: 4rem 8rem 8rem 8rem;
   display: grid;
-  grid-template-rows: 1fr min-content 6rem 1fr;
-  grid-template-columns: max-content;
+  grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+  grid-template-columns: minmax(min-content, max-content);
   grid-row-gap: 1.5rem;
   justify-content: center;
 }
@@ -158,17 +188,19 @@ body {
 }
 .header__seenon-logos {
   display: flex;
-  justify-content: space-between;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
   gap: 3rem;
 }
 .header__seenon-logos img {
-  height: 2.5rem;
+  max-height: 2.5rem;
   filter: brightness(70%);
 }
 
 .realtors {
   background-color: #101d2c;
-  grid-area: 1/col-start 7/2/full-end;
+  grid-column: col-start 7/full-end;
   padding: 3rem;
   display: grid;
   align-content: center;
@@ -194,7 +226,7 @@ body {
 }
 
 .features {
-  grid-area: 2/center-start/3/center-end;
+  grid-column: center-start/center-end;
   margin: 15rem 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
@@ -219,8 +251,8 @@ body {
 }
 
 .story__pictures {
+  grid-column: full-start/col-end 4;
   background-color: #c69963;
-  grid-area: 3/full-start/4/col-end 4;
   background-image: linear-gradient(rgba(198, 153, 99, 0.5), rgba(198, 153, 99, 0.5)), url(../img/back.jpg);
   display: grid;
   grid-template-rows: repeat(6, 1fr);
@@ -242,7 +274,7 @@ body {
 }
 .story__content {
   background-color: #f9f7f6;
-  grid-area: 3/col-start 5/4/full-end;
+  grid-column: col-start 5/full-end;
   padding: 6rem 8vw;
   display: flex;
   flex-direction: column;
@@ -256,7 +288,7 @@ body {
 }
 
 .homes {
-  grid-area: 4/center-start/5/center-end;
+  grid-column: center-start/center-end;
   margin: 15rem 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
@@ -320,8 +352,8 @@ body {
 }
 
 .gallery {
+  grid-column: full-start/full-end;
   background-color: #f9f7f6;
-  grid-area: 5/full-start/6/full-end;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(7, 5vw);
@@ -378,9 +410,9 @@ body {
 }
 
 .footer {
-  background-color: #101d2c;
-  grid-area: 6/full-start/7/full-end;
+  grid-column: full-start/full-end;
   padding: 8rem;
+  background-color: #101d2c;
 }
 
 .nav {
