@@ -1,8 +1,62 @@
 @use 'base' as *;
 
+// header row has height of 80vh (see grid definition of .container)
 .header {
   background-color: $color-grey-dark-1;
   // grid-column: full-start / col-end 6; // name set of columns col-start x to col-end x -> use dev tools to count cols
   // grid-row: 1 / 2;
   grid-area: 1 / full-start / 2 / col-end 6;
+  // best way to create overlay
+  background-image: linear-gradient(rgba($color-secondary, 0.93), rgba($color-secondary, 0.93)),
+    url(../img/hero.jpeg);
+  background-position: center;
+  padding: 4rem 8rem 8rem 8rem;
+
+  display: grid;
+  // DYNAMIC SPACING WITH GRID: with 1fr 1st + 4th row occupie all available space, 2nd row occupies only its content
+  grid-template-rows: 1fr min-content 6rem 1fr;
+  grid-template-columns: max-content; // here only 1 col, col has width of largest content (without line-break) of a grid item in this column
+  grid-row-gap: 1.5rem;
+  justify-content: center; // center entire grid content horizontally in grid container
+
+  &__logo {
+    height: 3rem;
+    justify-self: center; // center logo in its grid cell
+  }
+
+  &__btn {
+    // without these properties, grid content is stretched horizontally and vertically to full cell size
+    align-self: start;
+    justify-self: start;
+  }
+
+  // use pseudo-elements ::before and ::after as grid items to create framing lines for text
+  &__seenon-text {
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-column-gap: 1.5rem;
+    align-items: center;
+
+    font-size: 1.6rem;
+    color: $color-grey-light-2;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      height: 1px;
+      background-color: currentColor; // takes current font color of element (-> color-grey-light-2)
+    }
+  }
+
+  &__seenon-logos {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+
+    img {
+      height: 2.5rem;
+      filter: brightness(70%); // set img darker
+    }
+  }
 }
