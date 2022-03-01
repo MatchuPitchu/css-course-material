@@ -22,6 +22,14 @@
   grid-row-gap: 1.5rem;
   justify-content: center; // center entire grid content horizontally in grid container
 
+  @media only screen and (max-width: $bp-medium) {
+    grid-column: full-start / full-end;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    padding: 5rem;
+  }
+
   &__logo {
     height: 3rem;
     justify-self: center; // center logo in its grid cell

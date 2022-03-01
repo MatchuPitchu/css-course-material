@@ -13,11 +13,26 @@
   justify-items: center;
   grid-row-gap: 2rem;
 
+  @media only screen and (max-width: $bp-medium) {
+    grid-column: full-start / full-end;
+  }
+
   &__list {
     display: grid;
     grid-template-columns: min-content max-content; // min-content to fit img width, max-content to have text without line-breaks
     grid-gap: 5vh 2rem; // use vh to have more spacing between rows on really huge screens
     align-items: center; // align grid items vertically in this grid container
+
+    @media only screen and (max-width: $bp-medium) {
+      grid-template-columns: repeat(
+        3,
+        min-content max-content
+      ); // this creates 6 cols -> 3*(min-content max-content)
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      grid-template-columns: min-content max-content; // position like at the beginning
+    }
   }
 
   &__img {
